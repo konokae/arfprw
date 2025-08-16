@@ -83,13 +83,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fetchResults(page = 1) {
   const q = input.value.trim();
   if (q.length > 1) {
-    fetch('ajax_search.php?q=' + encodeURIComponent(q) + '&page=' + page)
+    fetch('ajax_search.js?q=' + encodeURIComponent(q) + '&page=' + page)
       .then(res => res.text())
       .then(html => {
         resultBox.innerHTML = html;
         renderPagination(page);
       });
-    fetch('ajax_search.php?count=1&q=' + encodeURIComponent(q))
+    fetch('ajax_search.js?count=1&q=' + encodeURIComponent(q))
       .then(res => res.json())
       .then(data => {
         infoBox.innerHTML = `${data.total} hasil ditemukan untuk kata kunci <strong>"${q}"</strong>`;
@@ -103,7 +103,7 @@ function fetchResults(page = 1) {
 
 function renderPagination(page) {
   const q = input.value.trim();
-  fetch('ajax_search.php?count=1&q=' + encodeURIComponent(q))
+  fetch('ajax_search.js?count=1&q=' + encodeURIComponent(q))
     .then(res => res.json())
     .then(data => {
       const totalPages = Math.ceil(data.total / 10);
