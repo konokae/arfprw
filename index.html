@@ -63,7 +63,7 @@
   <footer>
     <div id="summary-info"></div>
     <br>
-    Mesin ini dikembangkan oleh <strong>Zenstudio</strong> | Hak cipta &copy; <?= date('Y') ?> Arfctx Music Project
+    Mesin ini dikembangkan oleh <strong>Zenstudio</strong> | Hak cipta &copy; <span id="year"></span> Arfctx Music Project
   </footer>
 </div>
 
@@ -76,6 +76,9 @@ const infoBox = document.getElementById('search-info');
 const summaryBox = document.getElementById('summary-info');
 let timer = null;
 let currentPage = 1;
+
+// tampilkan tahun sekarang (ganti PHP date)
+document.getElementById('year').textContent = new Date().getFullYear();
 
 function fetchResults(page = 1) {
   const q = input.value.trim();
